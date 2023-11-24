@@ -1,0 +1,63 @@
+<mat-form-field>
+  <mat-label>Фильтр</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Введите Месяц в формате .**. или год в формате .****" #input>
+</mat-form-field>
+
+<mat-table [dataSource]="data" class="mat-elevation-z8">
+    <ng-container matColumnDef="date">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Дата </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{ element.date }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="time">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Время </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.time }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="temperature">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Температура Ц. </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.temperature }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="humidity">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Отн. влажность % </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.humidity }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="dewPoint">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Точка росы Ц. </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.dewPoint }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="pressure">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Атм. давление мм рт. ст. </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.pressure }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="windDirection">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Направление ветра </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.windDirection }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="windSpeed">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Скорость ветра м/с </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.windSpeed }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cloudiness">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Облачность % </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.cloudiness }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cloudinessLowerBound">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Ниж. граница облачности м </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.cloudinessLowerBound }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="horizontalVisibility">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Горизонтальаня видимость км </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.horizontalVisibility }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="weatherConditions">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Погодные явления </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{ element.weatherConditions }} </mat-cell>
+      </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row matRipple *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+</mat-paginator>
